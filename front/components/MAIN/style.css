@@ -1,0 +1,11 @@
+.selecionado{
+    background-color: blueviolet !important; 
+} 
+.cor{
+   background-color: yellow
+}
+
+.cabecalho{
+    font-size:  18px; 
+    font-family: Helvetica, sans-serif;
+}

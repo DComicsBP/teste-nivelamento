@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+    <script src="./mainController.js"></script>
+    <script src="./main.service.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+        crossorigin="anonymous">
+    <meta charset="utf-8">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/js/bootstrap.min.js" integrity="sha384-o+RDsa0aLu++PJvFqy8fFScvbHFLtbvScb8AjopnFD+iEQ7wo/CG0xlczd+2O/em"
+        crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="./style.css">
+
+
+</head>
+
+<body>
+
+    <ul class="nav">
+        <li class="nav-item">
+            <a class="nav-link active" href="#">Active</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#">Link</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#">Link</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link disabled" href="#">Disabled</a>
+        </li>
+    </ul>
+
+    <div ng-app="myApp" ng-controller="mainController" style="width: 70%; margin: 0 auto;">
+    
+        <br>
+        <br>
+        <form name="alunoForm">
+
+            <section class="cabecalho">
+
+                {{title[2]}}:
+
+                <select class="form-control" ng-model="aluno.turma" ng-options="turma.Nome for turma in turmas " ng-change="selectTurma(aluno.turma)">
+                    <option value="">Selecione uma Turma</option>
+                </select>
+                <br>
+                <br> {{title[1]}}:
+                <input type="text" placeholder="professores" value="{{professores.Nome}}" readonly/>
+                <br>
+                <br> {{title[0]}}:
+            </section>
+
+            <div class="col-md-5 col-md-offset-5">
+
+                <table class="table table-striped">
+                    <tr>
+                        <th>
+                            Selecionar Aluno
+                        </th>
+                        <th>
+                            Alunos
+                        </th>
+
+
+                    </tr>
+                    <tr ng-repeat="aluno in alunos" ng-style="">
+                        <td>
+                            <input type="radio" ng-model="aluno.Selecionado" value="true">
+                        </td>
+
+                        <td>{{aluno.Nome}}</td>
+                    </tr>
+
+
+                </table>
+
+                <br>
+                <br>
+                <hr style="color: black; margin: 10px;">x
+                <br>
+                <h4>Adicione um novo Aluno</h4>
+                <input type="text" placeholder="Adicione um Nome" ng-model="aluno.nome" id="nome" name="nome" />
+                <br>
+                <br>
+                <button class="btn btn-success" ng-click="enviar(aluno)" ng-disabled="!aluno.nome">Enviar</button>
+
+                <button class="btn btn-danger" ng-click="apagar(alunos);">Apagar Aluno</button>
+        </form>
+
+
+        <h1>Teste</h1>
+        {{umaCor}}
+
+        </div>
+
+
+</body>
+
+</html>
