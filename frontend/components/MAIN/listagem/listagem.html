@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Document</title>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+                crossorigin="anonymous">
+        <meta charset="utf-8">
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+                crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+                crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/js/bootstrap.min.js" integrity="sha384-o+RDsa0aLu++PJvFqy8fFScvbHFLtbvScb8AjopnFD+iEQ7wo/CG0xlczd+2O/em"
+                crossorigin="anonymous"></script>
+        <script src="../../MAIN/mainController.js"></script>
+
+</head>
+
+<body>
+        <ul class="nav">
+                <li class="nav-item">
+                        <a class="nav-link active" href="../index.html">Home</a>
+                </li>
+                <li class="nav-item">
+                        <a class="nav-link" href="./listagem/listagem.html">Listagem</a>
+                </li>
+
+        </ul>
+        <div ng-app="myApp" ng-controller="mainController" style="width: 70%; margin: 0 auto;">
+                <div class="hide">
+                        <table class="table table-striped">
+                                <tr>
+                                        <th>
+                                                Turma
+                                        </th>
+                                        <th>
+                                                professor
+                                        </th>
+                                        <th>
+                                                Alunos
+                                        </th>
+                                        <th>
+                                                Visualizar
+                                        </th>
+                                </tr>
+                                <tr ng-repeat="turma in getAll" ng-style="">
+
+                                        <td>{{turma.Turma}}</td>
+                                        <td>{{ turma.Professor }}</td>
+                                        <td>{{turma.Alunos}}</td>
+                                        <td><a class="btn btn-success" ng-click="carregarAlunos(turma);" style="color:white; ">Visualizar</a></td>
+                                </tr>
+
+
+                        </table>
+
+
+                        <input type="button" value="Voltar" class="btn btn-info" onClick="history.go(-1)">
+                </div>
+
+
+                <div class="show">
+
+                        <h1>Professor: {{turmas[0].NOME_PROFESSOR }}</h1>
+                        <h1>Turma: {{ turmas[0].TURMA }}</h1>
+
+                        <table class="table table-striped">
+                                <tr>
+
+                                        <th>
+                                                Alunos
+                                        </th>
+
+                                </tr>
+                                <tr ng-repeat="aluno in alunos" ng-style="">
+                                        <td>{{aluno.Nome}}</td>
+                                </tr>
+                        </table>
+                        
+                        <button onclick="location.reload();" class="btn btn-info">Voltar</button>
+                </div>
+        </div>
+
+</body>
+
+</html>

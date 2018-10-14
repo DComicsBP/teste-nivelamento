@@ -3,8 +3,9 @@
 
 <head>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
-    <script src="./mainController.js"></script>
-    <script src="./main.service.js"></script>
+    <script src="
+        ./app.module.js"> </script> <script src="./mainController.js"></script>
+
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
         crossorigin="anonymous">
     <meta charset="utf-8">
@@ -16,28 +17,22 @@
         crossorigin="anonymous"></script>
     <link rel="stylesheet" href="./style.css">
 
-
 </head>
 
 <body>
 
     <ul class="nav">
         <li class="nav-item">
-            <a class="nav-link active" href="#">Active</a>
+            <a class="nav-link active" href="/">Home</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="#">Link</a>
+            <a class="nav-link" href="./listagem/listagem.html">Turmas</a>
         </li>
-        <li class="nav-item">
-            <a class="nav-link" href="#">Link</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link disabled" href="#">Disabled</a>
-        </li>
+        
+        
     </ul>
-
     <div ng-app="myApp" ng-controller="mainController" style="width: 70%; margin: 0 auto;">
-    
+
         <br>
         <br>
         <form name="alunoForm">
@@ -46,12 +41,13 @@
 
                 {{title[2]}}:
 
-                <select class="form-control" ng-model="aluno.turma" ng-options="turma.Nome for turma in turmas " ng-change="selectTurma(aluno.turma)">
+                <select class="form-control" ng-model="aluno.turma" ng-options="turma.Nome for turma in turmas "
+                    ng-change="selectTurma(aluno.turma)">
                     <option value="">Selecione uma Turma</option>
                 </select>
                 <br>
                 <br> {{title[1]}}:
-                <input type="text" placeholder="professores" value="{{professores.Nome}}" readonly/>
+                <input type="text" placeholder="professores" value="{{prof[0]}}" readonly />
                 <br>
                 <br> {{title[0]}}:
             </section>
@@ -66,8 +62,6 @@
                         <th>
                             Alunos
                         </th>
-
-
                     </tr>
                     <tr ng-repeat="aluno in alunos" ng-style="">
                         <td>
@@ -82,22 +76,21 @@
 
                 <br>
                 <br>
-                <hr style="color: black; margin: 10px;">x
+                <hr style="color: black; margin: 10px;">
                 <br>
                 <h4>Adicione um novo Aluno</h4>
                 <input type="text" placeholder="Adicione um Nome" ng-model="aluno.nome" id="nome" name="nome" />
                 <br>
                 <br>
-                <button class="btn btn-success" ng-click="enviar(aluno)" ng-disabled="!aluno.nome">Enviar</button>
+                <button class="btn btn-success" ng-click="aluno.turma != 0?enviar(aluno):alert('Você deve selecionar a turma acima!')"
+                    ng-disabled="!aluno.nome">Enviar</button>
 
-                <button class="btn btn-danger" ng-click="apagar(alunos);">Apagar Aluno</button>
+                <button class="btn btn-info" ng-click="apagar(alunos);">Apagar Aluno</button>
         </form>
 
 
-        <h1>Teste</h1>
-        {{umaCor}}
 
-        </div>
+    </div>
 
 
 </body>
